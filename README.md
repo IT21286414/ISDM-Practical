@@ -79,3 +79,46 @@ SELECT CID, Accadamic_year, count(Mcode) from Offers group by CID, Accadamic_yea
 
 SELECT CID from Offers where Accadamic_year = 'Y3' group by CID having count(Mcode) > 2;
 
+/* lab 8 */
+Create Table it21286414_Course(
+	CID Char(10),
+	Cname varchar(50),
+	C_description VARCHAR(50),
+	C_fee int,
+	Constraint it21286414_Course_PK PRIMARY KEY(CID)
+);
+
+select * from it21286414_Course;
+
+CREATE TABLE it21286414_Module(
+	Mcode char(10),
+	Mname VARCHAR(50),
+	M_Description VARCHAR(50),
+	NoOfCredits int,
+	CONSTRAINT it21286414_MODULE_PK PRIMARY KEY(Mcode)
+);
+
+SELECT * FROM it21286414_Module
+
+CREATE TABLE it21286414_Student(
+	SID char(10),
+	Sname varchar(50),
+	Address varchar(50),
+	NIC char(10),
+	dob DATE,
+	CID char(10),
+	CONSTRAINT it21286414_Student_PK PRIMARY KEY(SID),
+	CONSTRAINT it21286414_Student_FK Foreign KEY(CID) REFERENCES it21286414_Course(CID)
+);
+
+CREATE TABLE it21286414_Offers(
+	CID char(10),
+	Mcode char(10),
+	Academic_Year char(2),
+	Semester int, 
+	CONSTRAINT PK PRIMARY KEY(CID,Mcode),
+	CONSTRAINT FK1 FOREIGN KEY(CID) REFERENCES it21286414_Course(CID),
+	CONSTRAINT FK2 FOREIGN KEY(Mcode) REFERENCES it21286414_Module(Mcode)
+);
+
+select * from it21286414_Offers
