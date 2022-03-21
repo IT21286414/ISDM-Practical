@@ -64,7 +64,6 @@ SELECT CID, Count(Mcode) from Offers where Semester = '2' group by CID
 SELECT CID, Count(Mcode) from Offers where Semester = '2' group by CID order by CID Asc
 
 
-
 /* lab 5 - page 4*/ 
 SELECT * from Module
 SELECT * from Course
